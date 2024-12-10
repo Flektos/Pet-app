@@ -5,6 +5,15 @@ public class Vet extends User {
     private ArrayList <String> ApprovedVPets;
     private ArrayList <String> NotApprovedVPets;
     private ArrayList <String> NotYetApprovedVPets;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getSurname() {
         return Surname;

@@ -5,6 +5,15 @@ public class Shelter extends User{
     private ArrayList <String> PetList;
     private ArrayList <String> AdoptedPets;
     private ArrayList <String> CitizenList;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getRegion() {
         return Region;
