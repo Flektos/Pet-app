@@ -1,5 +1,8 @@
 package gr.hua.dit.petapp.entities;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+
 public class Pet {
     private int petid;
     private String name;
@@ -14,7 +17,8 @@ public class Pet {
     private String sex;
     private String Shelter;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private ApprovalStatus status;
 
     public int getPetid() {
         return petid;
@@ -112,11 +116,12 @@ public class Pet {
         Shelter = shelter;
     }
 
-    public String getStatus() {
+    public ApprovalStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ApprovalStatus status) {
         this.status = status;
     }
+
 }

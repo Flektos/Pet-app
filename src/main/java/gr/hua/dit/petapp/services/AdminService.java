@@ -23,6 +23,9 @@ public class AdminService {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private PetRepository petRepository;
+
     public boolean emailExists(String email) {
         return citizenRepository.findByEmail(email).isPresent() ||
                 shelterRepository.findByEmail(email).isPresent() ||
@@ -140,6 +143,28 @@ public class AdminService {
         }
 
         throw new IllegalArgumentException("Account not found with email: " + email);
+    }
+    // Get all pets waiting for approval
+    public List<Pet> getPendingPets() {
+        return petRepository.findByStatus(ApprovalStatus.PENDING);
+    }
+
+    @Transactional
+    public void approvePet(Integer petId) {
+        Pet pet = petRepository.findById(petId)
+                .orElseThrow(() -> new IllegalArgumentException("Pet not found with ID: " + petId));
+
+        pet.setStatus(ApprovalStatus.APPROVED);
+        petRepository.save(pet);
+    }
+
+    @Transactional
+    public void rejectPet(Integer petId) {
+        Pet pet = petRepository.findById(petId)
+                .orElseThrow(() -> new IllegalArgumentException("Pet not found with ID: " + petId));
+
+        pet.setStatus(ApprovalStatus.REJECTED);
+        petRepository.save(pet);
     }
 
 }

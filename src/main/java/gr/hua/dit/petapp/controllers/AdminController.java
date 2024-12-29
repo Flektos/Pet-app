@@ -1,9 +1,6 @@
 package gr.hua.dit.petapp.controllers;
 
-import gr.hua.dit.petapp.entities.AdoptionRequest;
-import gr.hua.dit.petapp.entities.Citizen;
-import gr.hua.dit.petapp.entities.Shelter;
-import gr.hua.dit.petapp.entities.Vet;
+import gr.hua.dit.petapp.entities.*;
 import gr.hua.dit.petapp.payload.response.MessageResponse;
 import gr.hua.dit.petapp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,11 +94,37 @@ public class AdminController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    // Endpoint to fetch all adoption requests
+    // Endpoint to filter adoption requests by status
     @GetMapping("/adoption-requests")
-    public ResponseEntity<List<AdoptionRequest>> getAllAdoptionRequests() {
-        List<AdoptionRequest> adoptionRequests = adoptionRequestService.getAllAdoptionRequests();
+    public ResponseEntity<List<AdoptionRequest>> getAdoptionRequests(@RequestParam(required = false) String status) {
+        List<AdoptionRequest> adoptionRequests;
+
+        if (status != null && !status.isEmpty()) {
+            adoptionRequests = adoptionRequestService.getAdoptionRequestsByStatus(status);
+        } else {
+            adoptionRequests = adoptionRequestService.getAllAdoptionRequests();
+        }
+
         return ResponseEntity.ok(adoptionRequests);
     }
+    // Get list of pets waiting for approval
+    @GetMapping("/pending-pets")
+    public ResponseEntity<List<Pet>> getPendingPets() {
+        List<Pet> pendingPets = adminService.getPendingPets();
+        return ResponseEntity.ok(pendingPets);
+    }
 
+    // Approve a specific pet
+    @PutMapping("/approve-pet/{petId}")
+    public ResponseEntity<String> approvePet(@PathVariable Integer petId) {
+        adminService.approvePet(petId);
+        return ResponseEntity.ok("Pet approved successfully.");
+    }
+
+    // Reject a specific pet
+    @PutMapping("/reject-pet/{petId}")
+    public ResponseEntity<String> rejectPet(@PathVariable Integer petId) {
+        adminService.rejectPet(petId);
+        return ResponseEntity.ok("Pet rejected successfully.");
+    }
 }
