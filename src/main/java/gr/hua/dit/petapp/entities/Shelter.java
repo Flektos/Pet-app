@@ -1,19 +1,16 @@
 package gr.hua.dit.petapp.entities;
+
 import java.util.ArrayList;
+import jakarta.persistence.*;
 public class Shelter extends User{
     private String Region;
-    private ArrayList <String> PetList;
+    private ArrayList <String> PetsList;
     private ArrayList <String> AdoptedPets;
     private ArrayList <String> CitizenList;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private AccountStatus status = AccountStatus.PENDING;
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    private ArrayList <String> VisitRequests;
 
     public String getRegion() {
         return Region;
@@ -24,11 +21,11 @@ public class Shelter extends User{
     }
 
     public ArrayList<String> getPetList() {
-        return PetList;
+        return PetsList;
     }
 
     public void setPetList(ArrayList<String> petList) {
-        PetList = petList;
+        PetsList = petList;
     }
 
     public ArrayList<String> getAdoptedPets() {
@@ -45,5 +42,29 @@ public class Shelter extends User{
 
     public void setCitizenList(ArrayList<String> citizenList) {
         CitizenList = citizenList;
+    }
+
+    public ArrayList<String> getPetsList() {
+        return PetsList;
+    }
+
+    public void setPetsList(ArrayList<String> petsList) {
+        PetsList = petsList;
+    }
+
+    public AccountStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AccountStatus status) {
+        this.status = status;
+    }
+
+    public ArrayList<String> getVisitRequests() {
+        return VisitRequests;
+    }
+
+    public void setVisitRequests(ArrayList<String> visitRequests) {
+        VisitRequests = visitRequests;
     }
 }

@@ -13,7 +13,8 @@ public class Pet {
     private String breed;
     private String sex;
     private String Shelter;
-    
+
+    private String status;
 
     public int getPetid() {
         return petid;
@@ -109,5 +110,13 @@ public class Pet {
 
     public void setShelter(String shelter) {
         Shelter = shelter;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -1,26 +1,74 @@
 package gr.hua.dit.petapp.entities;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
+import java.util.HashSet;
+import java.util.Set;
+
+
+@Entity
+@Table(	name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "Username"),
+                @UniqueConstraint(columnNames = "email")
+        })
+
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    @Size(max = 20)
     private String name;
+
+    @NotBlank
+    @Size(max = 20)
     private String Username;
-    private String password;
+
+    @NotBlank
+    @Size(max = 50)
+    @Email
     private String email;
-    private int id;
+
+    @NotBlank
+    @Size(max = 120)
+    private String password;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User() {
+    }
+
+    public User(String name, String Username, String email, String password) {
+        this.name = name;
+        this.Username = Username;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        name = name;
     }
 
     public String getUsername() {
         return Username;
     }
 
-    public void setUsername(String username) {
-        Username = username;
+    public void setUsername(String Username) {
+        Username = Username;
     }
 
     public String getPassword() {
@@ -39,11 +87,25 @@ public class User {
         this.email = email;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return Username;
+    }
+
 }

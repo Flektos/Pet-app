@@ -6,14 +6,6 @@ public class AdoptionRequest {
     private int pet;
     private String status;
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public int getRequestid() {
         return requestid;
     }
@@ -38,5 +30,11 @@ public class AdoptionRequest {
         this.pet = pet;
     }
 
-    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

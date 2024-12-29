@@ -4,9 +4,10 @@ public class Admin extends User {
     private String surname;
     private ArrayList<String> ApprovedShelters;
     private ArrayList<String> ApprovedPets;
-    private ArrayList<String> ApprovedVets;
-    private ArrayList<String> ApprovedCitizens;
 
+    private ArrayList<String> YetApprovedPets;
+
+    private ArrayList<String> AllAccounts;
     public String getSurname() {
         return surname;
     }
@@ -31,19 +32,20 @@ public class Admin extends User {
         ApprovedPets = approvedPets;
     }
 
-    public ArrayList<String> getApprovedVets() {
-        return ApprovedVets;
+    public ArrayList<String> getYetApprovedPets() {
+        return YetApprovedPets;
     }
 
-    public void setApprovedVets(ArrayList<String> approvedVets) {
-        ApprovedVets = approvedVets;
+
+    public void setYetApprovedPets(ArrayList<String> yetApprovedPets) {
+        YetApprovedPets = yetApprovedPets;
     }
 
-    public ArrayList<String> getApprovedCitizens() {
-        return ApprovedCitizens;
+    public ArrayList<String> getAllAccounts() {
+        return AllAccounts;
     }
 
-    public void setApprovedCitizens(ArrayList<String> approvedCitizens) {
-        ApprovedCitizens = approvedCitizens;
+    public void setAllAccounts(ArrayList<String> allAccounts) {
+        AllAccounts = allAccounts;
     }
 }
