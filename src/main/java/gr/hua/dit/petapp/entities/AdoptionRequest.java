@@ -1,19 +1,32 @@
 package gr.hua.dit.petapp.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class AdoptionRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private int requestid;
-    private  int citizen;
-    private int pet;
+    @OneToOne
+    @JoinColumn(name = "petid")
+    private Pet pet;
+    @ManyToOne
+    @JoinColumn(name = "citizenid")
+    private Citizen citizen;
+    @Column
     private String status;
+
+    public AdoptionRequest() {
+    }
+
+    public AdoptionRequest(Pet pet, int requestid, String status, Citizen citizen) {
+        this.pet = pet;
+        this.requestid = requestid;
+        this.status = status;
+        this.citizen = citizen;
+    }
 
     public int getRequestid() {
         return requestid;
@@ -23,20 +36,20 @@ public class AdoptionRequest {
         this.requestid = requestid;
     }
 
-    public int getCitizen() {
-        return citizen;
-    }
-
-    public void setCitizen(int citizen) {
-        this.citizen = citizen;
-    }
-
-    public int getPet() {
+    public Pet getPet() {
         return pet;
     }
 
-    public void setPet(int pet) {
+    public void setPet(Pet pet) {
         this.pet = pet;
+    }
+
+    public Citizen getCitizen() {
+        return citizen;
+    }
+
+    public void setCitizen(Citizen citizen) {
+        this.citizen = citizen;
     }
 
     public String getStatus() {

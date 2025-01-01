@@ -7,16 +7,27 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int petid;
+    @Column
     private String name;
+    @Column
     private String type;
+    @Column
     private int healthStatus;
+    @Column
     private String adoptionStatus;
+    @Column
     private int age;
+    @Column
     private String picture;
+    @Column
     private float weight;
+    @Column
     private float height ;
+    @Column
     private String breed;
+    @Column
     private String sex;
+    @Column
     private String Shelter;
 
     @Enumerated(EnumType.STRING)
