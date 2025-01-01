@@ -1,4 +1,4 @@
-package gr.hua.dit.petapp.services;
+/*package gr.hua.dit.petapp.services;
 
 import gr.hua.dit.petapp.entities.Role;
 import gr.hua.dit.petapp.entities.User;
@@ -83,4 +83,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         roleRepository.updateOrInsert(role);
     }
 
-}
+}*/

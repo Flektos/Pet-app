@@ -13,21 +13,20 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
-
-    @Autowired
     private AdminService adminService;
-
-    @Autowired
     private ShelterService shelterService;
-
-    @Autowired
     private VetServices vetService;
-
-    @Autowired
     private CitizenServices citizenService;
-
-    @Autowired
     private AdoptionRequestService adoptionRequestService;
+
+    public AdminController(AdminService adminService, ShelterService shelterService, VetServices vetService, CitizenServices citizenService, AdoptionRequestService adoptionRequestService)
+    {
+        this.adminService = adminService;
+        this.shelterService = shelterService;
+        this.vetService = vetService;
+        this.citizenService = citizenService;
+        this.adoptionRequestService = adoptionRequestService;
+    }
 
     @PutMapping("/update-shelter/{id}")
     public ResponseEntity<?> updateShelterProfile(@PathVariable Integer id, @RequestBody Shelter shelterDetails) {

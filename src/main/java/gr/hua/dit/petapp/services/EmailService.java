@@ -1,4 +1,5 @@
 package gr.hua.dit.petapp.services;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -7,13 +8,14 @@ import gr.hua.dit.petapp.repositories.EmailRepository;
 @Service
 public class EmailService {
 
-    private final JavaMailSender mailSender;
+    /*private final JavaMailSender mailSender;
 
     @Autowired
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 
+    @Transactional
     public void sendEmail(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
@@ -21,6 +23,8 @@ public class EmailService {
         message.setText(text);
         mailSender.send(message);
     }
+
+    @Transactional
     public void sendVisitRequestEmail(String citizenName, String shelterEmail) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(shelterEmail); // Email καταφυγίου
@@ -34,11 +38,13 @@ public class EmailService {
         message.setText(text);
         mailSender.send(message);
     }
+
+    @Transactional
     public void sendDeletionNotification(String email, String message) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(email);
         mailMessage.setSubject("Account Deletion Notification");
         mailMessage.setText(message);
         mailSender.send(mailMessage);
-    }
+    }*/
 }

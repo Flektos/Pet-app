@@ -1,9 +1,11 @@
 package gr.hua.dit.petapp.entities;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 
+@Entity
 public class Pet {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int petid;
     private String name;
     private String type;

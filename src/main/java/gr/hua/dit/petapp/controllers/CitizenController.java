@@ -36,7 +36,7 @@ public class CitizenController {
     }
     @PostMapping("/sendVisitRequest")
     public String sendVisitRequest(@RequestParam String citizenName, @RequestParam String shelterEmail) {
-        emailService.sendVisitRequestEmail(citizenName, shelterEmail);
+        //emailService.sendVisitRequestEmail(citizenName, shelterEmail);
         return "Το email εστάλη επιτυχώς στο καταφύγιο: " + shelterEmail;
     }
 

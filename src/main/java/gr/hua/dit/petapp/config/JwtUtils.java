@@ -1,4 +1,4 @@
-package gr.hua.dit.petapp.config;
+/*package gr.hua.dit.petapp.config;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
@@ -75,4 +75,4 @@ public class JwtUtils {
 
         return false;
     }
-}
+}*/

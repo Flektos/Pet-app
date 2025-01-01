@@ -35,7 +35,7 @@ public class PetController {
         petService.deletePet(id);
     }
 
-    @PutMapping
+    /*@PutMapping
     public void ChangeStatus(@PathVariable Integer id,@RequestBody Pet pet){
         petService.ChangeStatusPet(id,pet);
     }
@@ -48,6 +48,6 @@ public class PetController {
     @PutMapping
     public void ApprovedPetV(@PathVariable Integer id, @RequestBody Pet pet){
         petService.ApprovePetVet(id,pet);
-    }
+    }*/
 }
 

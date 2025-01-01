@@ -1,10 +1,18 @@
 package gr.hua.dit.petapp.entities;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.ArrayList;
+@Entity
 public class MedicalHistory {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Historyid;
     private int petid;
     private int vetid;
-    private ArrayList <String> healthReport;
+    //private ArrayList <String> healthReport;
 
     public int getHistoryid() {
         return Historyid;
@@ -30,11 +38,11 @@ public class MedicalHistory {
         this.vetid = vetid;
     }
 
-    public ArrayList<String> getHealthReport() {
+    /*public ArrayList<String> getHealthReport() {
         return healthReport;
     }
 
     public void setHealthReport(ArrayList<String> healthReport) {
         this.healthReport = healthReport;
-    }
+    }*/
 }

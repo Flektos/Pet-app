@@ -2,15 +2,16 @@ package gr.hua.dit.petapp.entities;
 
 import java.util.ArrayList;
 import jakarta.persistence.*;
+@Entity
 public class Shelter extends User{
     private String Region;
-    private ArrayList <String> PetsList;
+    /*private ArrayList <String> PetsList;
     private ArrayList <String> AdoptedPets;
-    private ArrayList <String> CitizenList;
+    private ArrayList <String> CitizenList;*/
     @Enumerated(EnumType.STRING)
     private AccountStatus status = AccountStatus.PENDING;
 
-    private ArrayList <String> VisitRequests;
+    //private ArrayList <String> VisitRequests;
 
     public String getRegion() {
         return Region;
@@ -20,7 +21,7 @@ public class Shelter extends User{
         Region = region;
     }
 
-    public ArrayList<String> getPetList() {
+    /*public ArrayList<String> getPetList() {
         return PetsList;
     }
 
@@ -56,15 +57,15 @@ public class Shelter extends User{
         return status;
     }
 
-    public void setStatus(AccountStatus status) {
+    */public void setStatus(AccountStatus status) {
         this.status = status;
     }
 
-    public ArrayList<String> getVisitRequests() {
+    /*public ArrayList<String> getVisitRequests() {
         return VisitRequests;
     }
 
     public void setVisitRequests(ArrayList<String> visitRequests) {
         VisitRequests = visitRequests;
-    }
+    }*/
 }

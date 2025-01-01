@@ -2,15 +2,16 @@ package gr.hua.dit.petapp.entities;
 
 import java.util.ArrayList;
 import jakarta.persistence.*;
+@Entity
 public class Vet extends User {
     private String Surname;
 
     @Enumerated(EnumType.STRING)
     private AccountStatus status = AccountStatus.PENDING; // Default to PENDING
 
-    private ArrayList <String> ApprovedVPets;
+    /*private ArrayList <String> ApprovedVPets;
     private ArrayList <String> NotApprovedVPets;
-    private ArrayList <String> HealthRequest;
+    private ArrayList <String> HealthRequest;*/
 
     public String getSurname() {
         return Surname;
@@ -20,7 +21,7 @@ public class Vet extends User {
         Surname = surname;
     }
 
-    public ArrayList<String> getApprovedVPets() {
+    /*public ArrayList<String> getApprovedVPets() {
         return ApprovedVPets;
     }
 
@@ -42,7 +43,7 @@ public class Vet extends User {
 
     public void setHealthRequest(ArrayList<String> notYetApprovedVPets) {
         HealthRequest = HealthRequest;
-    }
+    }*/
 
     public AccountStatus getStatus() {
         return status;

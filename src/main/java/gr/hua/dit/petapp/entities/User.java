@@ -28,7 +28,7 @@ public class User {
 
     @NotBlank
     @Size(max = 20)
-    private String Username;
+    private String username;
 
     @NotBlank
     @Size(max = 50)
@@ -48,9 +48,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String Username, String email, String password) {
+    public User(String name, String username, String email, String password) {
         this.name = name;
-        this.Username = Username;
+        this.username = username;
         this.email = email;
         this.password = password;
     }
@@ -64,11 +64,11 @@ public class User {
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
-    public void setUsername(String Username) {
-        Username = Username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -105,7 +105,7 @@ public class User {
 
     @Override
     public String toString() {
-        return Username;
+        return username;
     }
 
 }

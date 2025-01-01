@@ -41,8 +41,6 @@ public class PetServices {
         Pet pet1 = getPetById(id);
         pet1.setHealthStatus(pet.getHealthStatus());
         savePet(pet1);
-
-
     }
     @Transactional
     public void ApprovePetAdmin(Integer id, Pet pet){

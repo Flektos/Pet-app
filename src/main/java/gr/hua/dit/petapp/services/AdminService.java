@@ -73,9 +73,9 @@ public class AdminService {
             }
 
             if (status == AccountStatus.APPROVED) {
-                emailService.sendEmail(user.getEmail(), "Account Approved", "Your account has been approved!");
+                //emailService.sendEmail(user.getEmail(), "Account Approved", "Your account has been approved!");
             } else if (status == AccountStatus.REJECTED) {
-                emailService.sendEmail(user.getEmail(), "Account Rejected", "Your account has been rejected.");
+                //emailService.sendEmail(user.getEmail(), "Account Rejected", "Your account has been rejected.");
             }
         });
     }
@@ -124,21 +124,21 @@ public class AdminService {
         Optional<Shelter> shelter = shelterRepository.findByEmail(email);
         if (shelter.isPresent()) {
             shelterRepository.delete(shelter.get());
-            emailService.sendDeletionNotification(email, "Shelter account deleted successfully.");
+            //emailService.sendDeletionNotification(email, "Shelter account deleted successfully.");
             return;
         }
 
         Optional<Vet> vet = vetRepository.findByEmail(email);
         if (vet.isPresent()) {
             vetRepository.delete(vet.get());
-            emailService.sendDeletionNotification(email, "Vet account deleted successfully.");
+            //emailService.sendDeletionNotification(email, "Vet account deleted successfully.");
             return;
         }
 
         Optional<Citizen> citizen = citizenRepository.findByEmail(email);
         if (citizen.isPresent()) {
             citizenRepository.delete(citizen.get());
-            emailService.sendDeletionNotification(email, "Citizen account deleted successfully.");
+            //emailService.sendDeletionNotification(email, "Citizen account deleted successfully.");
             return;
         }
 

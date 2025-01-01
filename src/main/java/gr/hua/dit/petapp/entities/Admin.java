@@ -1,13 +1,16 @@
 package gr.hua.dit.petapp.entities;
+import jakarta.persistence.Entity;
+
 import java.util.ArrayList;
+@Entity
 public class Admin extends User {
     private String surname;
-    private ArrayList<String> ApprovedShelters;
-    private ArrayList<String> ApprovedPets;
+    //private ArrayList<String> ApprovedShelters;
+    //private ArrayList<String> ApprovedPets;
 
-    private ArrayList<String> YetApprovedPets;
+    //private ArrayList<String> YetApprovedPets;
 
-    private ArrayList<String> AllAccounts;
+    //private ArrayList<String> AllAccounts;
     public String getSurname() {
         return surname;
     }
@@ -16,7 +19,7 @@ public class Admin extends User {
         this.surname = surname;
     }
 
-    public ArrayList<String> getApprovedShelters() {
+    /*public ArrayList<String> getApprovedShelters() {
         return ApprovedShelters;
     }
 
@@ -26,9 +29,9 @@ public class Admin extends User {
 
     public ArrayList<String> getApprovedPets() {
         return ApprovedPets;
-    }
+    }*/
 
-    public void setApprovedPets(ArrayList<String> approvedPets) {
+    /*public void setApprovedPets(ArrayList<String> approvedPets) {
         ApprovedPets = approvedPets;
     }
 
@@ -47,5 +50,5 @@ public class Admin extends User {
 
     public void setAllAccounts(ArrayList<String> allAccounts) {
         AllAccounts = allAccounts;
-    }
+    }*/
 }
