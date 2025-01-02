@@ -11,14 +11,20 @@ public class Citizen extends User{
     @OneToMany
     private List<AdoptionRequest> adoptionRequestList;
 
+    @Column
+    @OneToMany
+    private List<Pet> pet;
     @Enumerated(EnumType.STRING)
     private AccountStatus status = AccountStatus.PENDING;
 
     public Citizen(){}
 
-    public Citizen(String surname)
+    public Citizen(String surname,List<AdoptionRequest> adoptionRequestList,List<Pet> pet)
     {
+
         this.surname = surname;
+        this.adoptionRequestList=adoptionRequestList;
+        this.pet=pet;
     }
 
     public String getSurname() {

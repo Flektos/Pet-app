@@ -14,6 +14,7 @@ public class MedicalHistory {
     @JoinColumn(name = "petid")
     private Pet pet;
 
+
     public MedicalHistory() {
     }
 

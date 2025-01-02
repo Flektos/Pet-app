@@ -2,6 +2,8 @@ package gr.hua.dit.petapp.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class AdoptionRequest {
     @Id
@@ -15,17 +17,22 @@ public class AdoptionRequest {
     @ManyToOne
     @JoinColumn(name = "citizenid")
     private Citizen citizen;
+
+    @OneToMany
+    @JoinColumn(name="adminid")
+    private List<Admin> admin;
     @Column
     private String status;
 
     public AdoptionRequest() {
     }
 
-    public AdoptionRequest(Pet pet, int requestid, String status, Citizen citizen) {
+    public AdoptionRequest(Pet pet, int requestid, String status, Citizen citizen , List<Admin> admin) {
         this.pet = pet;
         this.requestid = requestid;
         this.status = status;
         this.citizen = citizen;
+        this.admin = admin;
     }
 
     public int getRequestid() {

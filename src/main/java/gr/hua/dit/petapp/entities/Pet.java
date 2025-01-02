@@ -2,6 +2,8 @@ package gr.hua.dit.petapp.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Pet {
     @Id
@@ -30,8 +32,41 @@ public class Pet {
     @Column
     private String Shelter;
 
+    @ManyToOne
+    @JoinColumn(name="citizenid")
+    private Citizen citizen;
+
+    @ManyToOne
+    @JoinColumn(name="adminid")
+    private Admin admin;
+
+    @ManyToOne
+    @JoinColumn(name="vetid")
+    private Vet vet;
+
+    @OneToOne
+    @JoinColumn(name="historyid")
+    private MedicalHistory medicalHistory;
+
+    @OneToOne
+    @JoinColumn(name="requestid")
+    private AdoptionRequest adoptionRequest;
+
     @Enumerated(EnumType.STRING)
     private ApprovalStatus status;
+
+    public Pet(){
+
+    }
+
+    public Pet(Citizen citizen,Admin admin,Vet vet,MedicalHistory medicalHistory,AdoptionRequest adoptionRequest,ApprovalStatus status){
+        this.citizen=citizen;
+        this.admin=admin;
+        this.vet=vet;
+        this.medicalHistory=medicalHistory;
+        this.adoptionRequest=adoptionRequest;
+        this.status=status;
+    }
 
     public int getPetid() {
         return petid;
