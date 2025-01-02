@@ -38,7 +38,7 @@ public class VetController {
     @PostMapping
     public ResponseEntity<String> addVet(@RequestBody Vet vet) {
         try {
-            vetServices.saveVet(vet);
+            vetService.saveVet(vet);
             return new ResponseEntity<>("Vet account created successfully!", HttpStatus.CREATED);
         } catch (EmailAlreadyExistsException ex) {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);

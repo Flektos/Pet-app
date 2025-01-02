@@ -1,10 +1,13 @@
 package gr.hua.dit.petapp.services;
 
 import gr.hua.dit.petapp.entities.Shelter;
+import gr.hua.dit.petapp.entities.Vet;
 import gr.hua.dit.petapp.repositories.ShelterRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ShelterService {
@@ -50,5 +53,20 @@ public class ShelterService {
             throw new IllegalArgumentException("A shelter with this email already exists.");
         }
         shelterRepository.save(shelter);
+    }
+
+    @Transactional
+    public List<Shelter> getAllShelters() {
+        return shelterRepository.findAll();
+    }
+
+    @Transactional
+    public Shelter getShelterById(Integer id) {
+        return shelterRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public void deleteShelter(Integer id) {
+        shelterRepository.deleteById(id);
     }
 }
