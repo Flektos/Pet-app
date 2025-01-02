@@ -7,9 +7,11 @@ public class MedicalHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private int Historyid;
-    @Column
-    private int vetid;
+    private Long Historyid;
+    @ManyToOne
+    @JoinColumn(name = "vetid")
+    private Vet vet;
+
     @OneToOne
     @JoinColumn(name = "petid")
     private Pet pet;
@@ -18,25 +20,25 @@ public class MedicalHistory {
     public MedicalHistory() {
     }
 
-    public MedicalHistory(int vetid, Pet pet) {
-        this.vetid = vetid;
+    public MedicalHistory(Vet vet, Pet pet) {
+        this.vet = vet;
         this.pet = pet;
     }
 
-    public int getHistoryid() {
+    public Long getHistoryid() {
         return Historyid;
     }
 
-    public void setHistoryid(int historyid) {
+    public void setHistoryid(Long historyid) {
         Historyid = historyid;
     }
 
-    public int getVetid() {
-        return vetid;
+    public Vet getVet() {
+        return vet;
     }
 
-    public void setVetid(int vetid) {
-        this.vetid = vetid;
+    public void setVet(Vet vet) {
+        this.vet = vet;
     }
 
     public Pet getPet() {

@@ -1,7 +1,7 @@
 package gr.hua.dit.petapp.controllers;
 
 import gr.hua.dit.petapp.entities.*;
-import gr.hua.dit.petapp.payload.response.MessageResponse;
+//import gr.hua.dit.petapp.payload.response.MessageResponse;
 import gr.hua.dit.petapp.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +28,7 @@ public class AdminController {
         this.adoptionRequestService = adoptionRequestService;
     }
 
-    @PutMapping("/update-shelter/{id}")
+    /*@PutMapping("/update-shelter/{id}")
     public ResponseEntity<?> updateShelterProfile(@PathVariable Integer id, @RequestBody Shelter shelterDetails) {
         try {
             shelterService.updateShelter(id, shelterDetails);
@@ -46,9 +46,9 @@ public class AdminController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
-    }
+    }*/
 
-    @PutMapping("/update-citizen/{id}")
+    /*@PutMapping("/update-citizen/{id}")
     public ResponseEntity<?> updateCitizenProfile(@PathVariable Integer id, @RequestBody Citizen citizenDetails) {
         try {
             citizenService.updateCitizen(id, citizenDetails);
@@ -56,7 +56,7 @@ public class AdminController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new MessageResponse(e.getMessage()));
         }
-    }
+    }*/
 
     @GetMapping("/checkEmail")
     public ResponseEntity<Boolean> checkEmailExists(@RequestParam String email) {
@@ -115,14 +115,14 @@ public class AdminController {
 
     // Approve a specific pet
     @PutMapping("/approve-pet/{petId}")
-    public ResponseEntity<String> approvePet(@PathVariable Integer petId) {
+    public ResponseEntity<String> approvePet(@PathVariable Long petId) {
         adminService.approvePet(petId);
         return ResponseEntity.ok("Pet approved successfully.");
     }
 
     // Reject a specific pet
     @PutMapping("/reject-pet/{petId}")
-    public ResponseEntity<String> rejectPet(@PathVariable Integer petId) {
+    public ResponseEntity<String> rejectPet(@PathVariable Long petId) {
         adminService.rejectPet(petId);
         return ResponseEntity.ok("Pet rejected successfully.");
     }

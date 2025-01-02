@@ -1,4 +1,4 @@
-package gr.hua.dit.petapp.payload.request;
+/*package gr.hua.dit.petapp.payload.request;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -25,4 +25,4 @@ public class LoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-}
+}*/

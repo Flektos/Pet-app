@@ -1,4 +1,4 @@
-package gr.hua.dit.petapp.payload.request;
+/*package gr.hua.dit.petapp.payload.request;
 
 import gr.hua.dit.petapp.validation.RoleBasedField;
 import jakarta.validation.constraints.Size;
@@ -88,6 +88,5 @@ public class SignupRequest {
     public void setRegion(String region) {
         this.region = region;
     }
-
-}
+}*/
 

@@ -6,11 +6,6 @@ import java.util.List;
 
 @Entity
 public class Admin extends User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private long id;
-
     @OneToMany
     @JoinColumn(name="petid")
     private List<Pet> pet;
@@ -19,9 +14,11 @@ public class Admin extends User {
     @JoinColumn(name="shelterid")
     private List<Shelter> shelters;
 
+    //@OneToMany(mappedBy = "admin")
     @OneToMany
-    @JoinColumn(name="requestid")
+    @JoinColumn(name = "adoptionrequestid")
     private List<AdoptionRequest> adoptionRequest;
+
     @Column
     private String surname;
 
@@ -41,5 +38,29 @@ public class Admin extends User {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public List<Pet> getPet() {
+        return pet;
+    }
+
+    public void setPet(List<Pet> pet) {
+        this.pet = pet;
+    }
+
+    public List<AdoptionRequest> getAdoptionRequest() {
+        return adoptionRequest;
+    }
+
+    public void setAdoptionRequest(List<AdoptionRequest> adoptionRequest) {
+        this.adoptionRequest = adoptionRequest;
+    }
+
+    public List<Shelter> getShelters() {
+        return shelters;
+    }
+
+    public void setShelters(List<Shelter> shelters) {
+        this.shelters = shelters;
     }
 }

@@ -1,4 +1,4 @@
-package gr.hua.dit.petapp.validation;
+/*package gr.hua.dit.petapp.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -20,4 +20,4 @@ public @interface RoleBasedField {
     String roleField();  // The field containing roles in the request
     String targetField();  // The field to validate (e.g., 'surname' or 'region')
     String[] validRoles();  // List of roles that require this field
-}
+}*/

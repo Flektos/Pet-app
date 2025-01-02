@@ -9,8 +9,6 @@ public class AdoptionRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
-    private int requestid;
     @OneToOne
     @JoinColumn(name = "petid")
     private Pet pet;
@@ -18,29 +16,27 @@ public class AdoptionRequest {
     @JoinColumn(name = "citizenid")
     private Citizen citizen;
 
-    @OneToMany
+    /*@ManyToOne
     @JoinColumn(name="adminid")
-    private List<Admin> admin;
+    private Admin admin;*/
     @Column
     private String status;
 
     public AdoptionRequest() {
     }
 
-    public AdoptionRequest(Pet pet, int requestid, String status, Citizen citizen , List<Admin> admin) {
+    public AdoptionRequest(Pet pet, String status, Citizen citizen) {
         this.pet = pet;
-        this.requestid = requestid;
         this.status = status;
         this.citizen = citizen;
-        this.admin = admin;
     }
 
-    public int getRequestid() {
-        return requestid;
+    public Long getId() {
+        return id;
     }
 
-    public void setRequestid(int requestid) {
-        this.requestid = requestid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Pet getPet() {

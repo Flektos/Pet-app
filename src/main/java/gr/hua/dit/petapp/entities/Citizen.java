@@ -5,17 +5,16 @@ import java.util.List;
 
 @Entity
 public class Citizen extends User{
+    @Column
     private String surname;
-
-    @Column
     @OneToMany
+    @JoinColumn(name = "adoptionrequestid")
     private List<AdoptionRequest> adoptionRequestList;
-
-    @Column
     @OneToMany
+    @JoinColumn(name = "petid")
     private List<Pet> pet;
     @Enumerated(EnumType.STRING)
-    private AccountStatus status = AccountStatus.PENDING;
+    private AccountStatus status;
 
     public Citizen(){}
 
@@ -49,5 +48,13 @@ public class Citizen extends User{
 
     public void setAdoptionRequestList(List<AdoptionRequest> adoptionRequestList) {
         this.adoptionRequestList = adoptionRequestList;
+    }
+
+    public List<Pet> getPet() {
+        return pet;
+    }
+
+    public void setPet(List<Pet> pet) {
+        this.pet = pet;
     }
 }

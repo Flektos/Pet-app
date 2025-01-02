@@ -150,7 +150,7 @@ public class AdminService {
     }
 
     @Transactional
-    public void approvePet(Integer petId) {
+    public void approvePet(Long petId) {
         Pet pet = petRepository.findById(petId)
                 .orElseThrow(() -> new IllegalArgumentException("Pet not found with ID: " + petId));
 
@@ -159,7 +159,7 @@ public class AdminService {
     }
 
     @Transactional
-    public void rejectPet(Integer petId) {
+    public void rejectPet(Long petId) {
         Pet pet = petRepository.findById(petId)
                 .orElseThrow(() -> new IllegalArgumentException("Pet not found with ID: " + petId));
 

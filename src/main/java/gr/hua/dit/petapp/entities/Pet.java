@@ -8,7 +8,7 @@ import java.util.List;
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int petid;
+    private Long petid;
     @Column
     private String name;
     @Column
@@ -36,13 +36,17 @@ public class Pet {
     @JoinColumn(name="citizenid")
     private Citizen citizen;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name="adminid")
-    private Admin admin;
+    private Admin admin;*/
 
     @ManyToOne
     @JoinColumn(name="vetid")
     private Vet vet;
+
+    @ManyToOne
+    @JoinColumn(name = "shelterid")
+    private Shelter shelter;
 
     @OneToOne
     @JoinColumn(name="historyid")
@@ -59,20 +63,20 @@ public class Pet {
 
     }
 
-    public Pet(Citizen citizen,Admin admin,Vet vet,MedicalHistory medicalHistory,AdoptionRequest adoptionRequest,ApprovalStatus status){
+    public Pet(Citizen citizen,/*Admin admin,*/Vet vet,MedicalHistory medicalHistory,AdoptionRequest adoptionRequest,ApprovalStatus status){
         this.citizen=citizen;
-        this.admin=admin;
+        //this.admin=admin;
         this.vet=vet;
         this.medicalHistory=medicalHistory;
         this.adoptionRequest=adoptionRequest;
         this.status=status;
     }
 
-    public int getPetid() {
+    public Long getPetid() {
         return petid;
     }
 
-    public void setPetid(int petid) {
+    public void setPetid(Long petid) {
         this.petid = petid;
     }
 
@@ -172,4 +176,39 @@ public class Pet {
         this.status = status;
     }
 
+    public Citizen getCitizen() {
+        return citizen;
+    }
+
+    public void setCitizen(Citizen citizen) {
+        this.citizen = citizen;
+    }
+
+    public Vet getVet() {
+        return vet;
+    }
+
+    public void setVet(Vet vet) {
+        this.vet = vet;
+    }
+
+    public void setShelter(Shelter shelter) {
+        this.shelter = shelter;
+    }
+
+    public MedicalHistory getMedicalHistory() {
+        return medicalHistory;
+    }
+
+    public void setMedicalHistory(MedicalHistory medicalHistory) {
+        this.medicalHistory = medicalHistory;
+    }
+
+    public AdoptionRequest getAdoptionRequest() {
+        return adoptionRequest;
+    }
+
+    public void setAdoptionRequest(AdoptionRequest adoptionRequest) {
+        this.adoptionRequest = adoptionRequest;
+    }
 }

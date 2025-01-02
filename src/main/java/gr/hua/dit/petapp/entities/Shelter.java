@@ -6,18 +6,17 @@ import java.util.List;
 import jakarta.persistence.*;
 @Entity
 public class Shelter extends User{
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private long id;
+    private long id;*/
 
-    @OneToMany
-    @JoinColumn(name="petid")
+    @OneToMany(mappedBy = "shelter")
     private List<Pet> pet;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name="Adminid")
-    private Admin admin;
+    private Admin admin;*/
 
     private String Region;
 
@@ -28,9 +27,9 @@ public class Shelter extends User{
 
     }
 
-    public Shelter(List<Pet> pet,Admin admin, String Region,AccountStatus status) {
+    public Shelter(List<Pet> pet,/*Admin admin, */String Region,AccountStatus status) {
         this.pet = pet;
-        this.admin = admin;
+        //this.admin = admin;
         this.Region = Region;
         this.status = status;
     }
@@ -53,5 +52,13 @@ public class Shelter extends User{
 
     public void setStatus(AccountStatus status) {
         this.status = status;
+    }
+
+    public List<Pet> getPet() {
+        return pet;
+    }
+
+    public void setPet(List<Pet> pet) {
+        this.pet = pet;
     }
 }

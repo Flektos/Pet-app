@@ -1,6 +1,8 @@
 package gr.hua.dit.petapp.services;
 
 import gr.hua.dit.petapp.entities.AdoptionRequest;
+import gr.hua.dit.petapp.entities.Citizen;
+import gr.hua.dit.petapp.entities.Pet;
 import gr.hua.dit.petapp.repositories.AdoptionRequestRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +13,13 @@ import java.util.List;
 
 @Service
 public class AdoptionRequestService {
-    @Autowired
+
     private AdoptionRequestRepository adoptionRequestRepository;
+
+    public AdoptionRequestService(AdoptionRequestRepository adoptionRequestRepository)
+    {
+        this.adoptionRequestRepository = adoptionRequestRepository;
+    }
 
     // List of valid statuses
     private final List<String> validStatuses = Arrays.asList("PENDING", "APPROVED", "REJECTED");
@@ -33,5 +40,31 @@ public class AdoptionRequestService {
     // Method to get all adoption requests
     public List<AdoptionRequest> getAllAdoptionRequests() {
         return adoptionRequestRepository.findAll();
+    }
+
+    @Transactional
+    public AdoptionRequest getAdoptionRequest(Integer id)
+    {
+        AdoptionRequest adoptionRequest = adoptionRequestRepository.findById(id).get();
+        return adoptionRequest;
+    }
+
+    @Transactional
+    public void saveAdoptionRequest(AdoptionRequest adoptionRequest)
+    {
+        Pet pet = adoptionRequest.getPet();
+        Citizen citizen = adoptionRequest.getCitizen();
+
+        adoptionRequest.setCitizen(citizen);
+        adoptionRequest.setPet(pet);
+
+        adoptionRequestRepository.save(adoptionRequest);
+    }
+
+    @Transactional
+    public void deleteAdoptionRequest(Integer id)
+    {
+        AdoptionRequest adoptionRequest = adoptionRequestRepository.findById(id).get();
+        adoptionRequestRepository.delete(adoptionRequest);
     }
 }

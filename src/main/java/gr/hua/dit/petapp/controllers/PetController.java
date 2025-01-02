@@ -21,7 +21,7 @@ public class PetController {
     }
 
     @GetMapping("/{id}")
-    public Pet getPetById(@PathVariable Integer id) {
+    public Pet getPetById(@PathVariable Long id) {
         return petService.getPetById(id);
     }
 
@@ -31,7 +31,7 @@ public class PetController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletePet(@PathVariable Integer id) {
+    public void deletePet(@PathVariable Long id) {
         petService.deletePet(id);
     }
 

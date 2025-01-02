@@ -22,7 +22,7 @@ public class PetServices {
     }
 
     @Transactional
-    public Pet getPetById(Integer id) {
+    public Pet getPetById(Long id) {
         return petRepository.findById(id).orElse(null);
     }
 
@@ -32,18 +32,18 @@ public class PetServices {
     }
 
     @Transactional
-    public void deletePet(Integer id) {
+    public void deletePet(Long id) {
         petRepository.deleteById(id);
     }
 
     @Transactional
-    public void ApprovePetVet(Integer id, Pet pet){
+    public void ApprovePetVet(Long id, Pet pet){
         Pet pet1 = getPetById(id);
         pet1.setHealthStatus(pet.getHealthStatus());
         savePet(pet1);
     }
     @Transactional
-    public void ApprovePetAdmin(Integer id, Pet pet){
+    public void ApprovePetAdmin(Long id, Pet pet){
         Pet pet1 = getPetById(id);
         pet1.setAge(pet.getAge());
         pet1.setStatus(pet.getStatus());
@@ -62,7 +62,7 @@ public class PetServices {
 
     }
     @Transactional
-    public void ChangeStatusPet(Integer id, Pet pet){
+    public void ChangeStatusPet(Long id, Pet pet){
         Pet pet1 = getPetById(id);
         pet1.setAge(pet.getAge());
         pet1.setBreed(pet.getBreed());
